@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Agradecimento - Feirão</title>
+    <!-- Importando fontes do Google Fonts para um design elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos da página geral */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        
+        /* Botão de impressão */
+        .controls {
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 12px 24px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Configuração do Cartão (15cm x 10cm) */
+        .card {
+            width: 15cm;
+            height: 10cm;
+            background: #ffffff;
+            /* Fundo sutil para dar um ar premium */
+            background-image: radial-gradient(circle at top right, #ffffff, #f8fafc);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 1.5cm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Linha decorativa no topo do cartão */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #f59e0b, #ea580c); /* Cores vibrantes combinando com feirão */
+        }
+
+        /* Tipografia do Cartão */
+        h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 0;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        p {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+        
+        /* Bloco de assinatura */
+        .signature-block {
+            margin-top: auto;
+            text-align: center;
+        }
+        .signature-block p {
+            margin-bottom: 2px;
+            font-size: 13px;
+        }
+        .signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: 34px;
+            color: #0f172a;
+            margin-top: 4px;
+        }
+
+        /* Configuração específica para quando clicar em "Imprimir" */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .controls {
+                display: none; /* Esconde o botão na hora de imprimir */
+            }
+            .card {
+                box-shadow: none;
+                border: 1px dashed #cbd5e1; /* Cria uma linha guia para corte com a tesoura/guilhotina */
+                border-radius: 0;
+                margin: 0;
+                /* Garante que o fundo seja impresso */
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+            }
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button onclick="window.print()">🖨️ Imprimir Cartão</button>
+    </div>
+
+    <!-- Layout do Cartão -->
+    <div class="card">
+        <h1>Que alegria ter você aqui! 🌟</h1>
+        <p>A sua presença no nosso Feirão é muito especial para nós. Preparamos este kit exclusivo com muito carinho para você já entrar no clima do evento.</p>
+        <p>Que esse momento seja incrível pra você, repleto de ótimas oportunidades e de muita energia boa. Vista a camisa, coloque o boné e aproveite cada segundo!</p>
+        
+        <div class="signature-block">
+            <p>Um grande abraço,</p>
+            <div class="signature">Guga Gadelha</div>
+        </div>
+    </div>
+
+</body>
+</html>
