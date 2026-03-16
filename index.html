@@ -3,145 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartão de Agradecimento - Feirão</title>
-    <!-- Importando fontes do Google Fonts para um design elegante -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Carta Manifesto - 1º Mega Feirão G30</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        /* Estilos da página geral */
         body {
+            background-color: #f3f4f6; /* Gray background for the screen */
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f0f2f5;
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-        }
-        
-        /* Botão de impressão */
-        .controls {
-            margin-bottom: 30px;
-        }
-        button {
-            padding: 12px 24px;
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #1d4ed8;
-        }
-
-        /* Configuração do Cartão (15cm x 10cm) */
-        .card {
-            width: 15cm;
-            height: 10cm;
-            background: #ffffff;
-            /* Fundo sutil para dar um ar premium */
-            background-image: radial-gradient(circle at top right, #ffffff, #f8fafc);
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            padding: 1.5cm;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
+            padding: 2rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Estilos específicos para a folha A4 */
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            background-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 20mm;
             position: relative;
-            overflow: hidden;
+            box-sizing: border-box;
+            border-top: 12px solid #F6D142; /* Amarelo/Dourado C6 */
         }
 
-        /* Linha decorativa no topo do cartão */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, #f59e0b, #ea580c); /* Cores vibrantes combinando com feirão */
+        h1, h2, h3, .font-heading {
+            font-family: 'Montserrat', sans-serif;
         }
 
-        /* Tipografia do Cartão */
-        h1 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #1e293b;
-            margin-top: 0;
-            margin-bottom: 16px;
-            text-align: center;
+        .highlight-text {
+            color: #F6D142;
+            background-color: #111111;
+            padding: 0 4px;
         }
-        p {
-            font-size: 14px;
-            color: #475569;
-            line-height: 1.6;
-            text-align: center;
-            margin-bottom: 12px;
-        }
-        
-        /* Bloco de assinatura */
-        .signature-block {
-            margin-top: auto;
-            text-align: center;
-        }
-        .signature-block p {
-            margin-bottom: 2px;
-            font-size: 13px;
-        }
+
         .signature {
             font-family: 'Great Vibes', cursive;
-            font-size: 34px;
-            color: #0f172a;
-            margin-top: 4px;
+            font-size: 4.5rem;
+            line-height: 1;
+            color: #0f172a; /* Tom de tinta de caneta escura (azul-marinho bem escuro) */
+            text-shadow: 0.5px 0.5px 0px rgba(0,0,0,0.2); /* Leve volume simulando a tinta no papel */
         }
 
-        /* Configuração específica para quando clicar em "Imprimir" */
+        /* Regras para impressão perfeita */
         @media print {
             body {
-                background-color: white;
+                background-color: transparent;
                 padding: 0;
-            }
-            .controls {
-                display: none; /* Esconde o botão na hora de imprimir */
-            }
-            .card {
-                box-shadow: none;
-                border: 1px dashed #cbd5e1; /* Cria uma linha guia para corte com a tesoura/guilhotina */
-                border-radius: 0;
                 margin: 0;
-                /* Garante que o fundo seja impresso */
-                -webkit-print-color-adjust: exact; 
-                print-color-adjust: exact;
             }
-            @page {
-                size: A4;
-                margin: 2cm;
+            .a4-page {
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 15mm;
+                border-top: 10px solid #111111; /* Força impressão preta/escura se não tiver cor */
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="controls">
-        <button onclick="window.print()">🖨️ Imprimir Cartão</button>
-    </div>
+    <!-- Botão Flutuante para Imprimir / PDF -->
+    <button onclick="window.print()" class="fixed bottom-8 right-8 bg-gray-900 text-yellow-400 px-6 py-3 rounded-full font-bold shadow-2xl hover:bg-gray-800 transition-transform hover:scale-105 print:hidden flex items-center space-x-2 z-50 border-2 border-yellow-400 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+        </svg>
+        <span>Imprimir em PDF</span>
+    </button>
 
-    <!-- Layout do Cartão -->
-    <div class="card">
-        <h1>Que alegria ter você aqui! 🌟</h1>
-        <p>A sua presença no nosso Feirão é muito especial para nós. Preparamos este kit exclusivo com muito carinho para você já entrar no clima do evento.</p>
-        <p>Que esse momento seja incrível pra você, repleto de ótimas oportunidades e de muita energia boa. Vista a camisa, coloque o boné e aproveite cada segundo!</p>
+    <div class="a4-page flex flex-col justify-between">
         
-        <div class="signature-block">
-            <p>Um grande abraço,</p>
-            <div class="signature">Guga Gadelha</div>
-        </div>
+        <!-- Cabeçalho -->
+        <header class="mb-10 flex justify-between items-center border-b-2 border-gray-100 pb-6">
+            <div class="flex flex-col items-start">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Confidencial & Estratégico</p>
+                <h2 class="font-heading font-black text-2xl text-gray-900 tracking-tight">1º MEGA FEIRÃO <span class="text-yellow-500">G30</span></h2>
+            </div>
+            <div class="text-right">
+                <img src="https://raw.githubusercontent.com/danielengmat-coder/G30ativos/22986a0a2ebe2745eb57cad6d1e88dc973f432db/Horiz.%20Positivo.png" alt="Logo G30" class="h-32 w-auto object-contain">
+            </div>
+        </header>
+
+        <!-- Corpo da Copy -->
+        <main class="flex-grow space-y-6 text-gray-800 text-lg leading-relaxed">
+            
+            <h1 class="font-heading font-black text-4xl text-gray-900 leading-tight mb-8 uppercase">
+                Essa não é só mais uma ação de vendas.<br>
+                <span class="text-yellow-500 underline decoration-8 underline-offset-4">Nós vamos fazer história.</span>
+            </h1>
+
+            <p class="font-bold text-xl text-gray-900">
+                Ei, preste muita atenção no que você tem em mãos agora.
+            </p>
+
+            <p>
+                Você acaba de receber o passaporte para o maior evento que o nosso mercado já viu. Olhe bem para este kit.  
+                <strong class="text-gray-900 bg-yellow-100 px-1">Ele é o seu arsenal de guerra para os próximos dias.</strong>
+            </p>
+
+            <p>
+                Nós fomos aos bastidores, sentamos na mesa e unimos a força brutal do <strong>G30</strong> com as condições perfeitas pra ir pra cima. É a aceleração que sua equipe precisa. É o cenário dos sonhos para quem tem fome de venda e quer colocar dinheiro de verdade no bolso.
+            </p>
+
+            <p class="font-bold text-xl italic text-gray-700 border-l-4 border-yellow-500 pl-4 my-8">
+                A mesa está posta. O cliente vai chegar. Mas o show... o show é você quem dá.
+            </p>
+
+            <p>
+                Não desenhamos esse projeto gigantesco para "bater uma metinha". Nós criamos esse Feirão para esmagar as metas. Para que, daqui a anos, o mercado ainda olhe para trás e diga: <em>"Você lembra daquele Primeiro Feirão? Aquilo foi uma loucura!"</em>
+            </p>
+
+            <p>Mas uma história épica não se escreve sozinha. A bola agora está com você. E as regras do jogo são claras:</p>
+
+            <ul class="space-y-4 mt-6 mb-8">
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold mr-3 mt-1">1</span>
+                    <div>
+                        <strong class="text-gray-900 block text-lg">Energia no Talo:</strong> 
+                        Receba cada cliente como se ele fosse o negócio da sua vida. O seu entusiasmo vende muito mais que qualquer desconto.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold mr-3 mt-1">2</span>
+                    <div>
+                        <strong class="text-gray-900 block text-lg">Domine o Arsenal:</strong> 
+                        Engula as condições do C6 Bank. Elas são a sua arma secreta para tratorar qualquer objeção que aparecer na mesa.
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-8 h-8 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold mr-3 mt-1">3</span>
+                    <div>
+                        <strong class="text-gray-900 block text-lg">Sangue nos Olhos:</strong> 
+                        Não deixe nenhum lead esfriar. O "não" você já tem, vá buscar a assinatura no contrato. A vontade e o propósito (com elegância) é o que separa os medianos dos gigantes.
+                    </div>
+                </li>
+            </ul>
+
+            <p class="font-bold text-gray-900">
+                Este é o momento de separar quem apenas cumpre tabela de quem faz história e bate recorde.E para a equipe, lembre-se isso também é pra vocês!
+            </p>
+            
+            <p>
+                Vista a camisa. Use os materiais. O jogo virou.
+            </p>
+
+        </main>
+
+        <!-- Assinatura -->
+        <footer class="mt-12 pt-8 border-t-2 border-gray-100 flex flex-col items-center text-center">
+            <h3 class="font-heading font-black text-3xl uppercase text-gray-900 mb-6 tracking-wide">
+                Bora pra cima!
+            </h3>
+            
+            <div class="mt-4">
+                <!-- Assinatura estilizada (fonte ou imagem) -->
+                <div class="signature mb-4 transform -rotate-3">
+                    Guga Gadelha
+                </div>
+                <div class="w-16 h-1 bg-yellow-500 mx-auto mb-2"></div>
+                <p class="font-bold text-gray-500 uppercase tracking-widest text-sm">CEO</p>
+                <p class="text-xs text-gray-400 mt-1">1º Mega Feirão G30</p>
+            </div>
+        </footer>
+
     </div>
 
 </body>
